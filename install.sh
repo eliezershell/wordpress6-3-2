@@ -7,9 +7,10 @@ sudo a2dismod mpm_event
 sudo a2enmod mpm_prefork rewrite php8.1
 sudo systemctl restart apache2
 
-sudo apt install php8.1 php-json php-mysqli php-curl php-dom php-exif php-fileinfo php-igbinary php-imagick php-intl php-mbstring php-xml php-zip php-apcu php-opcache php-iconv php-shmop php-simplexml php-xmlreader php-ssh2 php-ftp php-sockets -y
+sudo apt install php8.1 php-json php-curl php-dom php-exif php-fileinfo php-igbinary php-imagick php-intl php-mbstring php-xml php-zip php-apcu php-opcache php-iconv php-shmop php-simplexml php-xmlreader php-ssh2 php-ftp php-sockets -y
 
 sudo apt install mariadb-server -y
+sudo apt install php-mysqli
 read -p "Nome de usuário MySQL: " usuario
 read -p "Senha de usuário MySQL: " senha
 read -p "Nome do banco de dados MySQL: " banco
@@ -31,7 +32,10 @@ sudo chown -R www-data /var/www/
 sudo chmod 755 -R /var/www/
 
 sudo systemctl restart apache2
-sudo systemctl status apache2
+
+#sudo snap install --classic certbot
+#sudo ln -s /snap/bin/certbot /usr/bin/certbot
+#sudo certbot --apache
 
 echo "------------------------------Instalação concluída com sucesso!------------------------------"
 echo "----------------------Script by: Eliezer Ribeiro | linkedin.com/in/elinux--------------------"
